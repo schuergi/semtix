@@ -62,6 +62,10 @@ public class OdtTemplate {
 		data.put("strasse", person.getStrasse());
 		data.put("plz", person.getPlz());
 		data.put("wohnort", person.getWohnort());
+		if ( ! (person.getLand() == null  || person.getLand() == "Deutschland" ))
+		{
+			data.put("land", person.getLand());
+		}
 		data.put("matrikelnr", person.getMatrikelnr());
 		data.put("semester", semester.getSemesterBezeichnung());
 
