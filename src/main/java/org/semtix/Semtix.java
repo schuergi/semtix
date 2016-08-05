@@ -120,7 +120,7 @@ public class Semtix {
             if (result.equalsIgnoreCase("create___disabled")) {
                 //create all default database data
 
-				JOptionPane.showMessageDialog(null, "Achtung: Die Datenbank wird überschrieben. Wenn Sie das nicht wollen, holen Sie Ihren Admin.");
+				JOptionPane.showMessageDialog(null, "Achtung: Die Datenbank wird überschrieben. Wenn Sie das nicht wollen, holen Sie Ihre_n Admin.");
 
                 DBHandlerTextbausteine.createDefaultValues();
 
@@ -150,7 +150,7 @@ public class Semtix {
                 //DBHandlerAntrag.importFromFile("/home/eins/daten/antraege", "\\$", 0);
 
                 DBHandlerUser dbHandlerUser = new DBHandlerUser();
-
+                //TODO hier mal die logins bereinigen / anders initialisieren
                 SemtixUser user = new SemtixUser();
                 user.setKuerzel("EINS");
                 user.setLoginName("eins");

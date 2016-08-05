@@ -62,7 +62,7 @@ public class OdtTemplate {
 		data.put("strasse", person.getStrasse());
 		data.put("plz", person.getPlz());
 		data.put("wohnort", person.getWohnort());
-		if ( ! (person.getLand() == null  || person.getLand() == "Deutschland" ))
+		if ( ! (person.getLand() == null  || person.getLand() == "Deutschland" || person.getLand().length() > 0))
 		{
 			data.put("land", person.getLand());
 		}
@@ -522,6 +522,10 @@ public class OdtTemplate {
 		data.put("strasse", person.getStrasse());
 		data.put("plz", person.getPlz());
 		data.put("wohnort", person.getWohnort());
+		if ( ! (person.getLand() == null  || person.getLand() == "Deutschland" || person.getLand().length() > 0))
+		{
+			data.put("land", person.getLand());
+		}
 		data.put("matrikelnr", person.getMatrikelnr());
 		data.put("semester", semester.getSemesterBezeichnung());
 

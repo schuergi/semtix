@@ -90,6 +90,7 @@ public class DBHandlerPerson {
 	 */
 	public static void main(String[] argv) {
 		try {
+			//TODO und noch irgendein Pfad hardcoded, to be replaced
 			importFromFile("/home/eins/daten/output", "\\$", Uni.KW);
 		} catch (Exception e) {
 			e.printStackTrace();
