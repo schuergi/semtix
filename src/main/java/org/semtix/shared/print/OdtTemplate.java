@@ -32,6 +32,7 @@ import org.semtix.db.dao.*;
 import org.semtix.shared.daten.DeutschesDatum;
 import org.semtix.shared.daten.MyException;
 import org.semtix.shared.daten.enums.AntragStatus;
+import org.semtix.shared.daten.enums.GermanNumberToWords;
 import org.semtix.shared.daten.enums.HaerteAblehnungsgrund;
 import org.semtix.shared.daten.enums.Vorgangsart;
 
@@ -104,6 +105,7 @@ public class OdtTemplate {
 		Map<String, Object> data = initData(person, semester);
 
 		BigDecimal vollzuschuss = semester.getSozialfonds().add(semester.getBeitragTicket());
+
 		BigDecimal pw;
 		if (null == semester.getPunktWert()) {
 			pw = BigDecimal.ZERO;
@@ -114,16 +116,19 @@ public class OdtTemplate {
 			pw = vollzuschuss;
 		}
 		Integer summepunkte = antrag.getPunkteEinkommen() + antrag.getPunkteHaerte();
-
 		if (antrag.isTeilzuschuss()) {
 			Double d = Double.valueOf(antrag.getAnzahlMonate()) / 6;
 			data.put("betrag", DeutschesDatum.getEuroFormatted(vollzuschuss.multiply(new BigDecimal(d))));
+			data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(vollzuschuss.multiply(new BigDecimal(d)).intValue()));
+
 		} else {
 			BigDecimal betrag = pw.multiply(new BigDecimal(summepunkte));
 			if (betrag.compareTo(vollzuschuss) >= 0) {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(vollzuschuss));
+				data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(vollzuschuss.intValue()).toUpperCase());
 			} else {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(betrag));
+				data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(betrag.intValue()).toUpperCase());
 			}
 		}
 
