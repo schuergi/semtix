@@ -169,9 +169,9 @@ public class OdtTemplate {
 				data.put("aa", "N");
 				data.put("iban", "");
 				data.put("bic", "");
-				data.put("kontoinhaberin", "");
-				data.put("ktostrasse", "");
-				data.put("ktowohnort", "");
+				data.put("kontoinhaberin", person.getNachname().concat(", ").concat(person.getVorname()));
+				data.put("ktostrasse", person.getStrasse());
+				data.put("ktowohnort", person.getWohnort());
 			} else {
 				data.put("iban", person.getIBAN());
 				data.put("bic", person.getBIC());
