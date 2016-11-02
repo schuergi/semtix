@@ -119,16 +119,16 @@ public class OdtTemplate {
 		if (antrag.isTeilzuschuss()) {
 			Double d = Double.valueOf(antrag.getAnzahlMonate()) / 6;
 			data.put("betrag", DeutschesDatum.getEuroFormatted(vollzuschuss.multiply(new BigDecimal(d))));
-			data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(vollzuschuss.multiply(new BigDecimal(d)).intValue()));
+			data.put("betragworte", GermanNumberToWords.convert(vollzuschuss.multiply(new BigDecimal(d)).intValue()));
 
 		} else {
 			BigDecimal betrag = pw.multiply(new BigDecimal(summepunkte));
 			if (betrag.compareTo(vollzuschuss) >= 0) {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(vollzuschuss));
-				data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(vollzuschuss.intValue()).toUpperCase());
+				data.put("betragworte", GermanNumberToWords.convert(vollzuschuss.intValue()).toUpperCase());
 			} else {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(betrag));
-				data.put("betragworte", GermanNumberToWords.convertLessThanOneThousand(betrag.intValue()).toUpperCase());
+				data.put("betragworte", GermanNumberToWords.convert(betrag.intValue()).toUpperCase());
 			}
 		}
 
