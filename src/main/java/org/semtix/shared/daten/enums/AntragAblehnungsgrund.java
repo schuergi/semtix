@@ -34,8 +34,8 @@ public enum AntragAblehnungsgrund {
     ZUREICH(2, "Einkommen zu hoch", "Das Einkommen überschreitet den Bedarf im Sinne von §2 Absatz 3 und 4 der Sozialfondssatzung. Deshalb kann dem Antrag trotz eventuell anerkannter Härten (s.u.) nicht stattgegeben werden."),
     ZURUECKGEZOGEN(3, "Antrag zurückgezogen", "Da du deinen Antrag zurückgezogen hast, haben wir diesen deinem Wunsch entsprechend abgelehnt."),
     NICHTNACHGEWIESEN(4, "Nichts nachgewiesen", "Da du auf unsere Nachfragebriefe nicht reagiert hast und dein Antrag unvollständig ist, mussten wir deinen Antrag leider ablehnen."),
-    EXMATRIKULIERT(5, "Nicht immatrikuliert", "Der Datenabgleich mit dem Immatrikulationsbüro hat ergeben, dass Du für das Antragssemester nicht eingeschrieben bist. Deshalb muss dein Antrag leider abgelehnt werden.");
-
+    EXMATRIKULIERT(5, "Nicht immatrikuliert", "Der Datenabgleich mit dem Immatrikulationsbüro hat ergeben, dass Du für das Antragssemester nicht eingeschrieben bist. Deshalb muss dein Antrag leider abgelehnt werden."),
+    BEFREIUNG(6, "Vom Ticket befreit", "Der Datenabgleich mit dem Immatrikulationsbüro hat ergeben, dass Du für den Antragszeitraum vom Semesterticket befreit bist. Deshalb muss dein Antrag gem. §1(2) der Sozialfondsatzung leider abgelehnt werden.");
 
     private String name;
     private String begruendung;
