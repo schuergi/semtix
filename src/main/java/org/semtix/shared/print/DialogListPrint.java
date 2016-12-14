@@ -45,7 +45,7 @@ public class DialogListPrint
 	private final List<Antrag> antragList;
 	private final boolean istAZA;
 	org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(DialogListPrint.class);
-	private int howOften;
+	// private int howOften;
 	private JSpinner spinner;
 	private JTable tabelle;
 	private TableModelAntragUebersicht tableModel;
@@ -62,7 +62,7 @@ public class DialogListPrint
 	public DialogListPrint(List<Antrag> antragList, int howOften, boolean istAZA) {
 
 		this.antragList = antragList;
-		this.howOften = howOften;
+		//this.howOften = howOften;
 		this.istAZA = istAZA;
 
 		setTitle("Liste von Anträgen drucken");
@@ -139,16 +139,16 @@ public class DialogListPrint
 		buttonPanel.add(closeButton);
 
 		JPanel northPanel = new JPanel();
-		spinner = new JSpinner(new SpinnerNumberModel(howOften, 1, 9, 1));
+	/*	spinner = new JSpinner(new SpinnerNumberModel(howOften, 1, 9, 1));
 		JSpinner.DefaultEditor spinnerEditor = (JSpinner.DefaultEditor) spinner.getEditor();
 		spinnerEditor.getTextField().setEditable(false);
 
-		spinner.addChangeListener(new ChangeListener() {
+		/spinner.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent changeEvent) {
 				howOften = Integer.valueOf(spinner.getValue().toString());
 			}
-		});
+		});*/
 
 
 		labelTitle1 = new JLabel(titleString1);
@@ -156,7 +156,7 @@ public class DialogListPrint
 		northPanel.add(labelTitle1);
 
 
-		JButton generieren = new JButton("Dokumente generieren");
+		JButton generieren = new JButton("ODT-Dokumente generieren");
 		generieren.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -171,7 +171,7 @@ public class DialogListPrint
 		});
 
 
-		JButton druckStarten = new JButton("Druck Starten");
+		JButton druckStarten = new JButton("PDFs rendern/AZAs drucken");
 		druckStarten.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -182,7 +182,7 @@ public class DialogListPrint
 						JOptionPane.showMessageDialog(null, "Es läuft bereits ein aktiver Vorgang.", "Fehler", JOptionPane.ERROR_MESSAGE);
 					} else {
 						thread = new DruckThread();
-						if (JOptionPane.showConfirmDialog(null, pathsToPrint.size() + " generierte Anträge " + howOften + "-fach drucken?") == JOptionPane.YES_OPTION) {
+						if (JOptionPane.showConfirmDialog(null, pathsToPrint.size() + " generierte Anträge als PDFs rendern?") == JOptionPane.YES_OPTION) {
 							thread.setDaemon(true);
 							thread.start();
 						}
@@ -219,7 +219,7 @@ public class DialogListPrint
 				}
 			}
 		});
-		buttonPanel.add(spinner);
+		//buttonPanel.add(spinner);
 		buttonPanel.add(stopBtn);
 		buttonPanel.add(generieren);
 		buttonPanel.add(druckStarten);
@@ -252,7 +252,7 @@ public class DialogListPrint
 
 		@Override
 		public void run() {
-			if (istAZA == true) {
+			if (istAZA) {
 
 
 					outputText.insert("\n" +
@@ -264,7 +264,7 @@ public class DialogListPrint
 					for (String path : pathsToPrint) {
 						if (mayRun) {
 							try {
-								OdtPrinter.print(path, howOften);
+								OdtPrinter.print(path, 1);
 
 								outputText.insert(path + " wurde an den Drucker gesendet. \n", 0);
 
