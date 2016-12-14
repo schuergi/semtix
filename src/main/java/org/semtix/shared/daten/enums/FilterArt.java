@@ -32,9 +32,9 @@ public enum FilterArt {
     //  KULANZRECHNEN("Kulanz rechnen"),
     UNVOLLSTAENDIG("unvollständig rechnen"),
     ABGELEHNT("abgelehnte Anträge"),
-    ANGENOMMEN("angenommene Anträge"),
+    ANGENOMMEN("genehmigte Anträge"),
     UNENTSCHIEDEN("nicht entschiedene Anträge"),
-    NUR_SONSTIGE("nur nach den sonstigen ");
+    NUR_SONSTIGE("nur nach den sonstigen -->");
 
 
     String status;
