@@ -264,7 +264,7 @@ public class DialogListPrint
 					for (String path : pathsToPrint) {
 						if (mayRun) {
 							try {
-								OdtPrinter.print(path, 1);
+								OdtPrinter.print(path, 2);
 
 								outputText.insert(path + " wurde an den Drucker gesendet. \n", 0);
 
