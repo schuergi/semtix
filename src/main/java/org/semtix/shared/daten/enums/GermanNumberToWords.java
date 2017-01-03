@@ -32,38 +32,38 @@ public class GermanNumberToWords {
 
         private static final String[] tensNames = {
                 "",
-                " zehn",
-                " zwanzig",
-                " dreißig",
-                " vierzig",
-                " fünfzig",
-                " sechzig",
-                " siebzig",
-                " achtzig",
-                " neunzig"
+                "zehn",
+                "zwanzig",
+                "dreißig",
+                "vierzig",
+                "fünfzig",
+                "sechzig",
+                "siebzig",
+                "achtzig",
+                "neunzig"
         };
 
         private static final String[] numNames = {
                 "",
-                " ein",
-                " zwei",
-                " drei",
-                " vier",
-                " fünf",
-                " sechs",
-                " sieben",
-                " acht",
-                " neun",
-                " zehn",
-                " elf",
-                " zwölf",
-                " dreizehn",
-                " vierzehn",
-                " fünfzehn",
-                " sechzehn",
-                " siebzehn",
-                " achtzehn",
-                " neunzehn"
+                "ein",
+                "zwei",
+                "drei",
+                "vier",
+                "fünf",
+                "sechs",
+                "sieben",
+                "acht",
+                "neun",
+                "zehn",
+                "elf",
+                "zwölf",
+                "dreizehn",
+                "vierzehn",
+                "fünfzehn",
+                "sechzehn",
+                "siebzehn",
+                "achtzehn",
+                "neunzehn"
         };
 
         public GermanNumberToWords() {
@@ -79,11 +79,11 @@ public class GermanNumberToWords {
                         soFar = numNames[number % 10];
                         number /= 10;
 
-                        soFar = new StringBuilder().append(soFar).append(" und").append(tensNames[number % 10]).toString();
+                        soFar = new StringBuilder().append(soFar).append("und").append(tensNames[number % 10]).toString();
                         number /= 10;
                 }
                 if (number == 0) return soFar;
-                return numNames[number] + " hundert" + soFar;
+                return numNames[number] + "hundert" + soFar;
         }
 
 
@@ -116,11 +116,11 @@ public class GermanNumberToWords {
                                 break;
                         case 1:
                                 tradBillions = convertLessThanOneThousand(billions)
-                                        + " milliarden ";
+                                        + "milliarden ";
                                 break;
                         default:
                                 tradBillions = convertLessThanOneThousand(billions)
-                                        + " billion ";
+                                        + "billion ";
                 }
                 String result = tradBillions;
 
@@ -131,11 +131,11 @@ public class GermanNumberToWords {
                                 break;
                         case 1:
                                 tradMillions = convertLessThanOneThousand(millions)
-                                        + " million ";
+                                        + "million ";
                                 break;
                         default:
                                 tradMillions = convertLessThanOneThousand(millions)
-                                        + " million ";
+                                        + "million ";
                 }
                 result = result + tradMillions;
 
@@ -145,11 +145,11 @@ public class GermanNumberToWords {
                                 tradHundredThousands = "";
                                 break;
                         case 1:
-                                tradHundredThousands = "ein tausend ";
+                                tradHundredThousands = "eintausend ";
                                 break;
                         default:
                                 tradHundredThousands = convertLessThanOneThousand(hundredThousands)
-                                        + " tausend ";
+                                        + "tausend ";
                 }
                 result = result + tradHundredThousands;
 

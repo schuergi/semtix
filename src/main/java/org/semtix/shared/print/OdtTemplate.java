@@ -125,10 +125,10 @@ public class OdtTemplate {
 			BigDecimal betrag = pw.multiply(new BigDecimal(summepunkte));
 			if (betrag.compareTo(vollzuschuss) >= 0) {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(vollzuschuss));
-				data.put("betragworte", GermanNumberToWords.convert(vollzuschuss.intValue()).toUpperCase());
+				data.put("betragworte", GermanNumberToWords.convert(vollzuschuss.intValue()));
 			} else {
 				data.put("betrag", DeutschesDatum.getEuroFormatted(betrag));
-				data.put("betragworte", GermanNumberToWords.convert(betrag.intValue()).toUpperCase());
+				data.put("betragworte", GermanNumberToWords.convert(betrag.intValue()));
 			}
 		}
 
@@ -172,6 +172,7 @@ public class OdtTemplate {
 				data.put("kontoinhaberin", person.getNachname().concat(", ").concat(person.getVorname()));
 				data.put("ktostrasse", person.getStrasse());
 				data.put("ktowohnort", person.getWohnort());
+				data.put("ktoplz", person.getPlz());
 			} else {
 				data.put("iban", person.getIBAN());
 				data.put("bic", person.getBIC());
