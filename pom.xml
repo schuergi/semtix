@@ -35,32 +35,50 @@
 
         <!-- PostgreSQL Treiber wird von Hibernate benötigt -->
 
+<!--
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
         </dependency>
+-->
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1212</version>
+		</dependency>
 
 
 
-        <dependency>
+
+		<dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.8.Final</version>
+            <version>5.2.5.Final</version>
         </dependency>
 
+<!--
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>3.5.6-Final</version>
         </dependency>
+-->
+		<!-- https://mvnrepository.com/artifact/org.hibernate.common/hibernate-commons-annotations -->
+		<dependency>
+			<groupId>org.hibernate.common</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>5.0.1.Final</version>
+		</dependency>
 
 
         <!-- Connection Pool für Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
-            <version>4.3.8.Final</version>
+            <version>5.2.5.Final</version>
         </dependency>
 
 
@@ -82,20 +100,20 @@
         <dependency>
             <groupId>fr.opensagres.xdocreport</groupId>
             <artifactId>fr.opensagres.xdocreport.document.odt</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.6</version>
         </dependency>
 
         <dependency>
             <groupId>fr.opensagres.xdocreport</groupId>
             <artifactId>fr.opensagres.xdocreport.template.freemarker</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.6</version>
         </dependency>
 
         <!-- slf4j-log4j implementierung; api wird von hibernate distributed und wirft sonst Fehler -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
+            <version>1.7.22</version>
         </dependency>
 
 
