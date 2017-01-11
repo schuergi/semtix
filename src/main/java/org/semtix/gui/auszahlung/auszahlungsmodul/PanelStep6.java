@@ -113,7 +113,12 @@ class PanelStep6
 						String name = p.getNachname() + ", " + p.getVorname();
 						if (null != p.getKontoInhaber_Name()) {
 							if (p.getKontoInhaber_Name().length() > 0) {
-								name = p.getKontoInhaber_Name();
+								if (!p.getKontoInhaber_Name().contains(", ")) {
+									String[] namesort = p.getKontoInhaber_Name().split("\\s");
+									name = namesort[1].concat(", ").concat(namesort[0]);
+								} else {
+									name = p.getKontoInhaber_Name();
+								}
 							}
 						}
 
@@ -121,7 +126,7 @@ class PanelStep6
 						String strasse = p.getStrasse();
 						if (null != p.getKontoInhaber_Strasse()) {
 							if (p.getKontoInhaber_Strasse().length() > 0) {
-								name = p.getKontoInhaber_Strasse();
+								strasse = p.getKontoInhaber_Strasse();
 							}
 						}
 
@@ -129,10 +134,17 @@ class PanelStep6
 						String wohnort = p.getWohnort();
 						if (null != p.getKontoInhaber_Wohnort()) {
 							if (p.getKontoInhaber_Wohnort().length() > 0) {
-								name = p.getKontoInhaber_Wohnort();
+								String[] kwohnpart = p.getKontoInhaber_Wohnort().split("\\s");
+								wohnort = kwohnpart[1];
 							}
 						}
-
+						String plz = p.getPlz();
+						if ( null != p.getKontoInhaber_Wohnort()) {
+							if (p.getKontoInhaber_Wohnort().length() > 0) {
+								String[] kwohnpart = p.getKontoInhaber_Wohnort().split("\\s");
+								plz = kwohnpart[0];
+							}
+						}
 
 						BigDecimal erstattung = a.getErstattung();
 
@@ -152,7 +164,7 @@ class PanelStep6
 						summe = summe.add(new BigDecimal(blaBetrag));
 
 						i++;
-						writer.print(i + "|" + name.trim() + "|" + strasse.trim() + "|" + p.getPlz().trim() + "|" +
+						writer.print(i + "|" + name.trim() + "|" + strasse.trim() + "|" + plz + "|" +
 								wohnort.trim() + "|" + p.getLand().trim() + "|" + iban + "|" +
 								p.getBIC().trim() + "|" + bModel.getSemester() + "|" + "Semtix " +
 								bModel.getSemester().getSemesterKurzform() + " " + p.getNachname().trim() + ", " +
