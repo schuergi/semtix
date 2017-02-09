@@ -32,7 +32,7 @@ import org.semtix.db.dao.*;
 import org.semtix.shared.daten.DeutschesDatum;
 import org.semtix.shared.daten.MyException;
 import org.semtix.shared.daten.enums.AntragStatus;
-import org.semtix.shared.daten.enums.GermanNumberToWords;
+import org.semtix.shared.daten.GermanNumberToWords;
 import org.semtix.shared.daten.enums.HaerteAblehnungsgrund;
 import org.semtix.shared.daten.enums.Vorgangsart;
 
