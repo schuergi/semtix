@@ -180,7 +180,7 @@ public class OdtTemplate {
 				if (!(null == person.getKontoInhaber_Name() || person.getKontoInhaber_Name().length() == 0)) {
 					data.put("kontoinhaberin", person.getKontoInhaber_Name());
 					data.put("ktostrasse", person.getKontoInhaber_Strasse());
-					//	data.put("ktoplz", "");
+					data.put("ktoplz", ""); //got to be at least an empty string...
 					data.put("ktowohnort", person.getKontoInhaber_Wohnort());
 				}	else {
 					data.put("kontoinhaberin",  person.toString());
