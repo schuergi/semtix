@@ -359,7 +359,7 @@ public class BerechnungModel
 		berechnungszettel.setAußerhalbABCCheck(checked);
 		if (checked) {
 
-			BigDecimal abcTarif = Berechnung.ABC_TARIF.divide(new BigDecimal("" + 6), 0, BigDecimal.ROUND_FLOOR);
+			BigDecimal abcTarif = Berechnung.ABC_TARIF.divide(new BigDecimal("" + 6), 0, BigDecimal.ROUND_HALF_UP);
 
 			createOrUpdate(BerechnungsZettelCFTypen.AUSSERHALBTARIFABC, abcTarif);
 		} else {
