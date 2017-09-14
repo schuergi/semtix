@@ -1,9 +1,9 @@
 Package: semtixdb
-Version: 2.4-13
+Version: 2.4-16
 Section: misc
 Priority: optional
 Architecture: all
-Depends: default-jre, postgresql-client, libreoffice
+Depends: default-jre, postgresql-client, libreoffice, xdg-utils
 Recommends: cups
 Maintainer: Felix Schuergut <schuergf@student.hu-berlin.de>
 Description: Semesterticketbuerosoftware der HU Berlin

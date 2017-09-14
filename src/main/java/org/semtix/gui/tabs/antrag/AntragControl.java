@@ -536,14 +536,14 @@ public class AntragControl
 						//Namensstrings können Leerzeichen enthalten:
 						String nachname = getPerson().getNachname().trim();
 						String vorname = getPerson().getVorname().trim();
-						nachname = nachname.replaceAll(" ", "%20");
-						vorname = vorname.replaceAll(" ", "%20");
-						mailtext = mailtext.replace("<Name>", vorname + "%20" + nachname);
+						//nachname = nachname.replaceAll(" ", "%20");
+						//vorname = vorname.replaceAll(" ", "%20");
+						mailtext = mailtext.replace("<Name>", vorname + " " + nachname);
 					}
 
 					String emailAdress = getPerson().getEmail();
 
-                    String strURI = "mailto:" + emailAdress + "?subject=" + betreff + "&body=" + mailtext;
+                    String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
 
 					Email.send(emailAdress, strURI);
 

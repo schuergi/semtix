@@ -630,10 +630,10 @@ public class PersonControl
 	public void sendMail() {
 		
 		String emailAdress = personModel.getPerson().getEmail().trim();
-		String betreff = "Betreff:%20...";
-		String mailtext = "Hallo%20" + personModel.getPerson().getVorname().replaceAll(" ","%20");
+		String betreff = "Betreff: ...";
+		String mailtext = "Hallo " + personModel.getPerson().getVorname();
 		
-		String strURI = "mailto:" + emailAdress	+ "?subject=" + betreff + "&body=" + mailtext;
+		String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
 
 		Email.send(emailAdress, strURI);
 		
