@@ -74,6 +74,7 @@ public class Semester implements Serializable, Comparable {
 	private BigDecimal chronischKrank;
 	private BigDecimal heizkostenpauschale;
 	private BigDecimal kappungMiete;
+	private BigDecimal kappungMiete2;
 	private BigDecimal auslandskosten;
 	private BigDecimal medKosten;
 	private BigDecimal schulden;
@@ -514,8 +515,16 @@ public class Semester implements Serializable, Comparable {
 		return kappungMiete;
 	}
 
+	public BigDecimal getKappungMiete2() {
+		return kappungMiete2;
+	}
+
 	public void setKappungMiete(BigDecimal kappungMiete) {
 		this.kappungMiete = kappungMiete;
+	}
+
+	public void setKappungMiete2(BigDecimal kappungMiete2) {
+		this.kappungMiete2 = kappungMiete2;
 	}
 
 	public BigDecimal getAuslandskosten() {

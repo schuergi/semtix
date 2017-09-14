@@ -124,6 +124,7 @@ public class DBHandlerSemester {
             semester.setChronischKrank(currentSemester.getChronischKrank());
             semester.setHeizkostenpauschale(currentSemester.getHeizkostenpauschale());
             semester.setKappungMiete(currentSemester.getKappungMiete());
+            semester.setKappungMiete2(currentSemester.getKappungMiete2());
             semester.setAuslandskosten(currentSemester.getAuslandskosten());
             semester.setMedKosten(currentSemester.getMedKosten());
             semester.setSchulden(currentSemester.getSchulden());

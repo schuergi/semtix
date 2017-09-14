@@ -17,6 +17,7 @@
 package org.semtix.gui.tabs.berechnungszettel;
 
 
+import com.sun.jndi.ldap.Ber;
 import org.semtix.config.Berechnung;
 import org.semtix.config.Settings;
 import org.semtix.db.DBHandlerBerechnungszettel;
@@ -255,12 +256,19 @@ public class BerechnungModel
 		updateViews();
 	}
 
+	//TODO: zweite Person in Mietkappung einbeziehen
 	public BigDecimal getMieteEffektiv() {
 		BigDecimal betrag = getMiete().add(getHeizpauschale());
-
+		BigDecimal betragMietKappung;
 		// Mietkappungsbetrag (multipliziert mit Gesamtanzahl Personen)
-		BigDecimal betragMietKappung = new BigDecimal(getGesamtAnzahlPersonen()).multiply(Berechnung.KAPPUNG_MIETE);
+		// das ist nicht satzungskomform!
 
+		if (getGesamtAnzahlPersonen() > 1) {
+			//getGesamtAnzahlPersonen zählt Antragsstelli mit, müssen wir nochmal abziehen:
+			betragMietKappung = new BigDecimal(getGesamtAnzahlPersonen()-1).multiply(Berechnung.KAPPUNG_MIETE2).add(Berechnung.KAPPUNG_MIETE);
+		} else {
+			betragMietKappung = Berechnung.KAPPUNG_MIETE;
+		}
 		// wenn Gesamtmiete grösser als Mietkappungsbetrag
 		if ((!isKeineMietkappungMiete()) && betrag.compareTo(betragMietKappung) > 0) {
 			betrag = betragMietKappung;

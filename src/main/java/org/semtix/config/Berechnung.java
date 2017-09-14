@@ -52,6 +52,8 @@ public class Berechnung {
 	public static BigDecimal HEIZPAUSCHALE;
 	// Betrag für Kappungsgrenze der Miete
 	public static BigDecimal KAPPUNG_MIETE;
+	// Betrag für Kappungsgrenze weiterer Personen
+	public static BigDecimal KAPPUNG_MIETE2;
 	// Betrag für Auslandskosten
 	public static BigDecimal AUSLANDSKOSTEN;
 	// Betrag für Med./Psych. Kosten (auf 6 Monate)
@@ -96,6 +98,7 @@ public class Berechnung {
 		semester.setChronischKrank(getValue("Chronisch_Krank"));
 		semester.setHeizkostenpauschale(getValue("Heizpauschale"));
 		semester.setKappungMiete(getValue("Kappung_Miete"));
+		semester.setKappungMiete2(getValue("Kappung_Miete2"));
 		semester.setAuslandskosten(getValue("Auslandskosten"));
 		semester.setMedKosten(getValue("Med_Psych_Kosten"));
 		semester.setSchulden(getValue("Schulden"));
@@ -114,6 +117,7 @@ public class Berechnung {
 		CHRONISCH_KRANK = semester.getChronischKrank();
 		HEIZPAUSCHALE = semester.getHeizkostenpauschale();
 		KAPPUNG_MIETE = semester.getKappungMiete();
+		KAPPUNG_MIETE2 = semester.getKappungMiete2();
 		AUSLANDSKOSTEN = semester.getAuslandskosten();
 		MED_PSYCH_KOSTEN = semester.getMedKosten();
 		SCHULDEN = semester.getSchulden();

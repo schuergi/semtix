@@ -45,9 +45,9 @@ implements ActionListener {
 	private JLabel lbGrundbedarf, lbKind, lbKindergeld, lbWeiterePerson, lbSchwangerschaft, lbAlleinerziehend,
 		lbChronischKrank, lbHeizPauschale, lbKappungMiete, lbAuslandskosten, lbMedKosten, lbSchulden, lbABCTarif;
 	private NewCurrencyField tfGrundbedarf, tfKind, tfKindergeld, tfKindergeld2, tfKindergeld3, tfWeiterePerson, tfSchwangerschaft, tfAlleinerziehend,
-			tfChronischKrank, tfHeizPauschale, tfKappungMiete, tfAuslandskosten, tfMedKosten, tfABCTarif;
+			tfChronischKrank, tfHeizPauschale, tfKappungMiete, tfKappungMiete2, tfAuslandskosten, tfMedKosten, tfABCTarif;
 	private BigDecimal oldGrundbedarf, oldKind, oldWeiterePerson, oldSchwangerschaft, oldAlleinerziehend,
-            oldChronischKrank, oldHeizPauschale, oldKappungMiete, oldAuslandskosten, oldMedKosten, oldSchulden, oldABCTarif, oldKindergeld, oldKindergeld2, oldKindergeld3;
+            oldChronischKrank, oldHeizPauschale, oldKappungMiete, oldKappungMiete2, oldAuslandskosten, oldMedKosten, oldSchulden, oldABCTarif, oldKindergeld, oldKindergeld2, oldKindergeld3;
     private PercentField tfSchulden;
 
     public OptionPanelBerechnung() {
@@ -119,6 +119,7 @@ implements ActionListener {
 		tfChronischKrank = new NewCurrencyField(8);
 		tfHeizPauschale = new NewCurrencyField(8);
 		tfKappungMiete = new NewCurrencyField(8);
+		tfKappungMiete2 = new NewCurrencyField(8);
 		tfAuslandskosten = new NewCurrencyField(8);
 		tfMedKosten = new NewCurrencyField(8);
 		tfSchulden = new PercentField(8);
@@ -136,6 +137,7 @@ implements ActionListener {
 		setFocusListener(tfChronischKrank);
 		setFocusListener(tfHeizPauschale);
 		setFocusListener(tfKappungMiete);
+		setFocusListener(tfKappungMiete2);
 		setFocusListener(tfAuslandskosten);
 		setFocusListener(tfMedKosten);
 		setFocusListener(tfABCTarif);
@@ -177,6 +179,7 @@ implements ActionListener {
 		mainPanel.add(tfChronischKrank,    1,  5, 1, 1, 0.0, 0.0, 1, 18, insets);
 		mainPanel.add(tfHeizPauschale,     1,  6, 1, 1, 0.0, 0.0, 1, 18, insets);
 		mainPanel.add(tfKappungMiete,      1,  7, 1, 1, 0.0, 0.0, 1, 18, insets);
+		mainPanel.add(tfKappungMiete2,	   2,  7, 1, 1, 0.0, 0.0, 1, 18, insets);
 		mainPanel.add(tfAuslandskosten,    1,  8, 1, 1, 0.0, 0.0, 1, 18, insets);
 		mainPanel.add(tfMedKosten,         1,  9, 1, 1, 0.0, 0.0, 1, 18, insets);
 		mainPanel.add(tfSchulden,          1, 10, 1, 1, 0.0, 0.0, 1, 18, insets);
@@ -210,6 +213,7 @@ implements ActionListener {
 		tfChronischKrank.setValue(Berechnung.CHRONISCH_KRANK);
 		tfHeizPauschale.setValue(Berechnung.HEIZPAUSCHALE);
 		tfKappungMiete.setValue(Berechnung.KAPPUNG_MIETE);
+		tfKappungMiete2.setValue(Berechnung.KAPPUNG_MIETE2);
 		tfAuslandskosten.setValue(Berechnung.AUSLANDSKOSTEN);
 		tfMedKosten.setValue(Berechnung.MED_PSYCH_KOSTEN);
 		tfSchulden.setValue(Berechnung.SCHULDEN);
@@ -232,6 +236,7 @@ implements ActionListener {
 		oldChronischKrank = Berechnung.CHRONISCH_KRANK;
 		oldHeizPauschale = Berechnung.HEIZPAUSCHALE;
 		oldKappungMiete = Berechnung.KAPPUNG_MIETE;
+		oldKappungMiete2 = Berechnung.KAPPUNG_MIETE2;
 		oldAuslandskosten = Berechnung.AUSLANDSKOSTEN;
 		oldMedKosten = Berechnung.MED_PSYCH_KOSTEN;
 		oldSchulden = Berechnung.SCHULDEN;
@@ -253,7 +258,7 @@ implements ActionListener {
 		lbAlleinerziehend.setForeground((tfAlleinerziehend.getBValue().compareTo(oldAlleinerziehend) != 0) ? UNSAVED : SAVED);
 		lbChronischKrank.setForeground((tfChronischKrank.getBValue().compareTo(oldChronischKrank) != 0) ? UNSAVED : SAVED);
 		lbHeizPauschale.setForeground((tfHeizPauschale.getBValue().compareTo(oldHeizPauschale) != 0) ? UNSAVED : SAVED);
-		lbKappungMiete.setForeground((tfKappungMiete.getBValue().compareTo(oldKappungMiete) != 0) ? UNSAVED : SAVED);
+		lbKappungMiete.setForeground((tfKappungMiete.getBValue().compareTo(oldKappungMiete) != 0) || (tfKappungMiete2.getBValue().compareTo(oldKappungMiete2) != 0 )  ? UNSAVED : SAVED);
 		lbAuslandskosten.setForeground((tfAuslandskosten.getBValue().compareTo(oldAuslandskosten) != 0) ? UNSAVED : SAVED);
 		lbMedKosten.setForeground((tfMedKosten.getBValue().compareTo(oldMedKosten) != 0) ? UNSAVED : SAVED);
 		lbSchulden.setForeground((tfSchulden.getBValue().compareTo(oldSchulden) != 0) ? UNSAVED : SAVED);
@@ -293,6 +298,7 @@ implements ActionListener {
 			semester.setChronischKrank(tfChronischKrank.getBValue());
 			semester.setHeizkostenpauschale(tfHeizPauschale.getBValue());
 			semester.setKappungMiete(tfKappungMiete.getBValue());
+			semester.setKappungMiete2(tfKappungMiete2.getBValue());
 			semester.setAuslandskosten(tfAuslandskosten.getBValue());
 			semester.setMedKosten(tfMedKosten.getBValue());
 			semester.setSchulden(tfSchulden.getBValue());
