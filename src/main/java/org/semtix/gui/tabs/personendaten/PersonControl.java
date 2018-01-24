@@ -631,8 +631,9 @@ public class PersonControl
 		
 		String emailAdress = personModel.getPerson().getEmail().trim();
 		String betreff = "Betreff: ...";
-		String mailtext = "Hallo " + personModel.getPerson().getVorname();
-		
+		String mailtext = "Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() + ",\\n";
+
+
 		String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
 
 		Email.send(emailAdress, strURI);
