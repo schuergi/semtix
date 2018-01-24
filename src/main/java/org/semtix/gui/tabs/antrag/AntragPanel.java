@@ -136,7 +136,7 @@ implements Observer {
 		headerPanel.add(lbSemester, 4, 0, 1, 1, 0.0, 0.0, 0, GridBagConstraints.EAST, new Insets(0, 5, 5, 2));
 
 
-		cbErstsemester = new JCheckBox("Erstsemester");
+		cbErstsemester = new JCheckBox("Späti");
 		cbTeilzuschuss = new JCheckBox("Teilzuschuss");
 		cbManuellAuszahlen = new JCheckBox("Barauszahlung");
 		cbBescheidVersandt = new JCheckBox("Bescheid versandt");
