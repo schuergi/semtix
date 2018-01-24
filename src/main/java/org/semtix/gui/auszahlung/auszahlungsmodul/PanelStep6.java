@@ -134,6 +134,7 @@ class PanelStep6
 						String wohnort = p.getWohnort();
 						if (null != p.getKontoInhaber_Wohnort()) {
 							if (p.getKontoInhaber_Wohnort().length() > 0) {
+								//* TODO: add a check, for Space inbetween
 								String[] kwohnpart = p.getKontoInhaber_Wohnort().split("\\s");
 								wohnort = kwohnpart[1];
 							}
@@ -169,6 +170,7 @@ class PanelStep6
 								p.getBIC().trim() + "|" + bModel.getSemester() + "|" + "Semtix " +
 								bModel.getSemester().getSemesterKurzform() + " " + p.getNachname().trim() + ", " +
 								p.getVorname().trim() + "|" + formattedBetrag + "\r\n");
+						writer.flush();
 
 					}
 				}
