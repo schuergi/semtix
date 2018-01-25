@@ -22,6 +22,7 @@ import org.semtix.db.DBHandlerConf;
 import org.semtix.db.dao.Anmerkung;
 import org.semtix.db.dao.Person;
 import org.semtix.gui.tabs.antrag.nachreichungen.pruefen.NachreichungControl;
+import org.semtix.shared.actions.Email;
 import org.semtix.shared.daten.StringHelper;
 import org.semtix.shared.daten.enums.Uni;
 import org.semtix.shared.elements.*;
@@ -72,7 +73,7 @@ public class PersonView extends KeyAdapter
 	private JToggleButton toggleButtonFlag;
 	private JTable antragTable, anmerkungTable;
 	private JButton speichernButton, resetButton, aktuellerAntragButton, nachreichungButton,
-			bestimmterAntragButton, neuerAntragButton, mailButton, protokollButton, delButton, changeUniButton;
+			bestimmterAntragButton, neuerAntragButton, mailButton, protokollButton, delButton, changeUniButton, adressinqButton;
 	private HashMap<JLabel, JTextField> hashMapCheckFields;
     private SForm infoPanel;
 
@@ -378,6 +379,8 @@ public class PersonView extends KeyAdapter
 		
 		// Mail an Person senden, wenn Mailadresse vorhanden/in DB gespeichert
 		mailButton = new JButton("E-Mail");
+
+		adressinqButton = new JButton("Adresse nachfragen");
 		
 		protokollButton = new JButton("Bearbeitungsprotokoll");
 
@@ -402,6 +405,7 @@ public class PersonView extends KeyAdapter
 		buttonPanel.add(neuerAntragButton, 0, 6, 1, 1, 0.0, 0.0, 2, 17, new Insets(25, 5, 25, 5));
 		buttonPanel.add(aktuellerAntragButton, 0, 7, 1, 1, 0.0, 0.0, 2, 17, new Insets(5, 5, 25, 5));
 		buttonPanel.add(bestimmterAntragButton, 0, 8, 1, 1, 0.0, 0.0, 2, 17, new Insets(5, 5, 25, 5));
+		buttonPanel.add(adressinqButton, 0, 9, 1, 1, 0.0, 0.0, 2, 17, new Insets(25, 5, 25, 5));
 		buttonPanel.add(nachreichungButton, 0, 10, 1, 1, 0.0, 0.0, 2, 17, new Insets(25, 5, 25, 5));
 
 
@@ -618,6 +622,12 @@ public class PersonView extends KeyAdapter
 		mailButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				personControl.sendMail();
+			}
+		});
+
+		adressinqButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				personControl.askForAdress();
 			}
 		});
 

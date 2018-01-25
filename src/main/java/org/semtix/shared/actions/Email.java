@@ -30,7 +30,8 @@ public class Email {
             strURI = strURI.replaceAll("%20", " ");
             strURI = strURI.replaceAll("%0A", "\n");
             String EmailCommandString = new String("xdg-email ").concat(strURI + " " + emailAdress);
-            System.out.println(EmailCommandString);
+            // Only for Debugging
+            //  System.out.println(EmailCommandString);
             try {
                 Runtime.getRuntime().exec(new String[]{"bash", "-c", EmailCommandString});
             } catch (IOException e) {

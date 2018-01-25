@@ -631,13 +631,38 @@ public class PersonControl
 		
 		String emailAdress = personModel.getPerson().getEmail().trim();
 		String betreff = "Betreff: ...";
-		String mailtext = "Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() + ",\\n";
+		String mailtext = "Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() + ",\n\n";
 
 
 		String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
 
 		Email.send(emailAdress, strURI);
 		
+	}
+
+	public void askForAdress() {
+
+		String emailAdress = personModel.getPerson().getEmail().trim();
+		String betreff = "Bescheid/Brief kam zurück - Stimmt die Adresse?";
+		String mailtext = "Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() +
+				",\n\nwir haben deinen Bescheid an folgende Adresse geschickt:\n\n" + getPerson().getStrasse() + "\n" + getPerson().getPlz() +" " + getPerson().getWohnort() + "\n\n\n" +
+				"Leider ist er zurückgekommen. Hat sich deine Adresse geändert oder ist\n" +
+				"die oben angegebene Adresse inkorrekt? Fehlen Adresszusätze wie\n" +
+				"Hinterhaus oder die W.E.N.? \n "
+				+ "Bitte teile uns deine aktuelle Adresse per Email mit, damit wir dir den\n" +
+				"Bescheid noch einmal zusenden können!\n" +
+				"\n" +
+				"Info: Für den Fall eines Umzuges solltest du uns immer deine neue\n" +
+				"Adresse mitteilen, auch wenn du das bei der Univerwaltung schon getan\n" +
+				"hast, da wir mit dieser nicht zusammenhängen und daher davon nichts\n" +
+				"erfahren.\n" +
+				"\n\nMit freundlichen Grüßen,\nDein Semesterticketbüro";
+
+
+		String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
+
+		Email.send(emailAdress, strURI);
+
 	}
 
 
