@@ -23,7 +23,7 @@
 	<packaging>jar</packaging>
     <groupId>de.hu-berlin.semesterticketbuero</groupId>
 	<artifactId>semtix</artifactId>
-    <version>2.5</version>
+    <version>2.6</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
