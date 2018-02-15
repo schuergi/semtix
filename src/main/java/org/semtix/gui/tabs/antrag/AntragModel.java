@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import org.semtix.config.SemesterConf;
 import org.semtix.db.*;
 import org.semtix.db.dao.*;
+import org.semtix.shared.daten.Fristen;
 import org.semtix.shared.daten.enums.AntragStatus;
 import org.semtix.shared.daten.enums.Vorgangsart;
 
@@ -116,10 +117,13 @@ extends Observable {
 
 		List<Antrag> alteAntraege = new DBHandlerAntrag().getAntragListe(person.getPersonID());
 		if (null == alteAntraege || alteAntraege.size() == 0) {
-			int returnvalue = JOptionPane.showConfirmDialog(null, "<html>Erstihäkchen setzen? " +
-					"<br> Das ist der erste Antrag dieser Person.</html>");
-			if (returnvalue == JOptionPane.YES_OPTION) {
-				antrag.setErstsemester(true);
+
+			if (!Fristen.isAntragsFrist()) {
+				int returnvalue = JOptionPane.showConfirmDialog(null, "<html>Erstihäkchen setzen? " +
+						"<br> Das ist der erste Antrag dieser Person.</html>");
+				if (returnvalue == JOptionPane.YES_OPTION) {
+					antrag.setErstsemester(true);
+				}
 			}
 		}
 		// Reset-Antrag zum Zurücksetzen anlegen
