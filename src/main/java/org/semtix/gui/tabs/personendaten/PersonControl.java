@@ -289,7 +289,7 @@ public class PersonControl
 			else if (personModel.getPerson().getPersonID() == -1) {
 
 				if (checkExistingMatrikel(tempPerson.getMatrikelnr())) {
-					String message = "Matrikelnummer existiert bereits in der Datenbank.";
+					String message = "Matrikelnummer existiert bereits in der Datenbank. Evtl archviert? Technik fragen!";
 					JOptionPane.showMessageDialog(null, message, "Fehler", JOptionPane.ERROR_MESSAGE);
 					saveFlag = false;
 				}
@@ -298,7 +298,7 @@ public class PersonControl
 			} else if (!tempPerson.getMatrikelnr().equals(personModel.getPerson().getMatrikelnr())) {
 
 				if (checkExistingMatrikel(tempPerson.getMatrikelnr())) {
-					String message = "Matrikelnummer existiert bereits in der Datenbank.";
+					String message = "Matrikelnummer existiert bereits in der Datenbank.  Evtl archviert? Technik fragen!";
 					JOptionPane.showMessageDialog(null, message, "Fehler", JOptionPane.ERROR_MESSAGE);
 					saveFlag = false;
 				}
