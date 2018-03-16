@@ -120,7 +120,8 @@ extends Observable {
 
 			if (!Fristen.isAntragsFrist()) {
 				int returnvalue = JOptionPane.showConfirmDialog(null, "<html>Erstihäkchen setzen? " +
-						"<br> Das ist der erste Antrag dieser Person.</html>");
+						"<br> Das ist der erste Antrag dieser Person."
+				+ "<br> Außerdem ist gerade keine Antragsfrist.</html>");
 				if (returnvalue == JOptionPane.YES_OPTION) {
 					antrag.setErstsemester(true);
 				}
