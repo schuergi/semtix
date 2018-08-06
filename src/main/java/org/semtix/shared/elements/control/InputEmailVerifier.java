@@ -46,7 +46,8 @@ extends InputVerifier {
 		String email = tf.getText().trim();
 		
 		// Pattern mit Mailadresse vergleichen
-		boolean foundMatch = email.matches("(?i)^[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]$");
+		// TLD can hat to be at least 2 characters
+		boolean foundMatch = email.matches("(?i)^[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$");
 		
 		// Falls Mailadresse mit Pattern übereinstimmt oder leer ist...
 		if(foundMatch || email.length()==0)
