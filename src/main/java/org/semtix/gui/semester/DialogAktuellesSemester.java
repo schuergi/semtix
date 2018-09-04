@@ -126,7 +126,7 @@ implements ActionListener {
         JPanel panel = new JPanel();
         panel.setBorder(new EmptyBorder(30, 10, 0, 10));
 
-        JLabel bezeichner = new JLabel("Lokales Arbeitssemeester auswählen:");
+        JLabel bezeichner = new JLabel("Lokales Arbeitssemester auswählen:");
         bezeichner.setFont(this.getFont().deriveFont(Font.BOLD, 12f));
         bezeichner.setForeground(new Color(0, 155, 0));
         panel.setOpaque(true);
