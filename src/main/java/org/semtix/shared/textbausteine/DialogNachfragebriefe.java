@@ -422,18 +422,22 @@ implements ActionListener {
 
 
         if (e.getActionCommand().equals("Löschen")) {
-            if (null != treeTextbausteine.getSelectionRows()) {
-                List<Textbaustein> bausteine = new ArrayList<Textbaustein>();
-                for (int i = 0; i < treeTextbausteine.getSelectionRows().length; i++) {
-                    DefaultMutableTreeNode node = new DefaultMutableTreeNode(treeTextbausteine.getPathForRow(treeTextbausteine.getSelectionRows()[i]).getLastPathComponent());
-                    if (node.isLeaf() && node.getUserObject() instanceof Textbaustein) {
-                        bausteine.add((Textbaustein) node.getUserObject());
-                    }
-                }
+			int dialogButton = JOptionPane.YES_NO_OPTION;
+			int dialogResult = JOptionPane.showConfirmDialog(null, "Sicher, dass du den Textblock löschen möchtest?", "Warning", dialogButton);
+			if (dialogResult == 0) {
+				if (null != treeTextbausteine.getSelectionRows()) {
+					List<Textbaustein> bausteine = new ArrayList<Textbaustein>();
+					for (int i = 0; i < treeTextbausteine.getSelectionRows().length; i++) {
+						DefaultMutableTreeNode node = new DefaultMutableTreeNode(treeTextbausteine.getPathForRow(treeTextbausteine.getSelectionRows()[i]).getLastPathComponent());
+						if (node.isLeaf() && node.getUserObject() instanceof Textbaustein) {
+							bausteine.add((Textbaustein) node.getUserObject());
+						}
+					}
 
-                treeModelNachfragebriefe.remove(bausteine);
+					treeModelNachfragebriefe.remove(bausteine);
 
-				clear();
+					clear();
+				}
 			}
         }
     }
