@@ -423,7 +423,7 @@ implements ActionListener {
 
         if (e.getActionCommand().equals("Löschen")) {
 			int dialogButton = JOptionPane.YES_NO_OPTION;
-			int dialogResult = JOptionPane.showConfirmDialog(null, "Sicher, dass du den Textblock löschen möchtest?", "Warning", dialogButton);
+			int dialogResult = JOptionPane.showConfirmDialog(this, "Sicher, dass du den Textblock löschen möchtest?", "Warning", dialogButton);
 			if (dialogResult == 0) {
 				if (null != treeTextbausteine.getSelectionRows()) {
 					List<Textbaustein> bausteine = new ArrayList<Textbaustein>();

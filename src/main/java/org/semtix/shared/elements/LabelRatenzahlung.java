@@ -49,7 +49,7 @@ extends JLabel{
 		setText("I");
 		
 		// Tooltip festlegen (Überfahren mit der Maus)
-		setToolTipText("<html>Diese Person ist <b>Individualzahler</b> (gewesen). <br> &nbsp; <br> <i>Siehe Antrag<i></html>");
+		setToolTipText("<html>Diese Person ist <b>Individualzahler_in</b> (gewesen). <br> &nbsp; <br> <i>Siehe Antrag<i></html>");
 		
 		// Größe des Kästchens festlegen
 		setPreferredSize(new Dimension(26,26));

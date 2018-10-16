@@ -59,7 +59,7 @@ extends JPanel {
 		JLabel lbSemester = new JLabel("Semester");
 		JLabel lbKulanz = new JLabel("Kulanz");
 		JLabel lbErstsemester = new JLabel("Erstsemester");
-		JLabel lbRatenzahlung = new JLabel("Ratenzahlung");
+		JLabel lbRatenzahlung = new JLabel("Individualzahler_innen");
 		JLabel lbNachreichung = new JLabel("Ungeprüfte Nachreichung vorhanden");
 		JLabel lbNothilfe = new JLabel("Nothilfe");
 		JLabel lbSpaetis = new JLabel("Verspätete");
