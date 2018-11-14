@@ -641,22 +641,33 @@ public class PersonControl
 	}
 
 	public void askForAdress() {
-		//TODO: replace this huge String with a text block, this here is just quick and dirty
+		// did this via StringBuilder, which is fine for now
+        // TODO: do it via text templates
 		String emailAdress = personModel.getPerson().getEmail().trim();
 		String betreff = "Bescheid/Brief kam zurück - Stimmt die Adresse?";
-		String mailtext = "Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() +
-				",\n\nwir haben einen Brief an folgende Adresse geschickt:\n\n" + getPerson().getStrasse() + "\n" + getPerson().getPlz() +" " + getPerson().getWohnort() + "\n\n\n" +
+		StringBuilder mailtext = new StringBuilder();
+		mailtext.append("Hallo " + personModel.getPerson().getVorname() + " " + personModel.getPerson().getNachname() +
+						",\n\nwir haben einen Brief an folgende Adresse geschickt:\n\n" +
+						getPerson().getVorname() + " " + getPerson().getNachname());
+
+		if (getPerson().getCo().length() != 0) {
+			mailtext.append("\n" + "c/o " + getPerson().getCo());
+		}
+		if ( getPerson().getWohneinheit().length() != 0) {
+			mailtext.append("\n" + getPerson().getWohneinheit());
+		}
+		mailtext.append("\n" + getPerson().getStrasse() + "\n" + getPerson().getPlz() +" " + getPerson().getWohnort() + "\n\n\n" +
 				"Leider ist er zurückgekommen. Hat sich deine Adresse geändert oder ist\n" +
-				"die oben angegebene Adresse inkorrekt? Fehlen Adresszusätze wie\n" +
-				"Hinterhaus oder die W.E.N.? \n "
-				+ "Bitte teile uns deine aktuelle Adresse per Email mit, damit wir dir den\n" +
-				"Brief noch einmal zusenden können!\n" +
-				"\n" +
-				"Info: Für den Fall eines Umzuges solltest du uns immer deine neue\n" +
-				"Adresse mitteilen, auch wenn du das bei der Univerwaltung (z.B. über Agnes) schon getan\n" +
-				"hast, da wir mit dieser nicht zusammenhängen und daher davon nichts\n" +
-				"erfahren.\n" +
-				"\n\nMit freundlichen Grüßen\nDein Semesterticketbüro";
+						"die oben angegebene Adresse inkorrekt? Fehlen Adresszusätze wie\n" +
+						"Hinterhaus oder die W.E.N.? \n "
+						+ "Bitte teile uns deine aktuelle Adresse per Email mit, damit wir dir den\n" +
+						"Brief noch einmal zusenden können!\n" +
+						"\n" +
+						"Info: Für den Fall eines Umzuges solltest du uns immer deine neue\n" +
+						"Adresse mitteilen, auch wenn du das bei der Univerwaltung (z.B. über Agnes) schon getan\n" +
+						"hast, da wir mit dieser nicht zusammenhängen und daher davon nichts\n" +
+						"erfahren.\n" +
+						"\n\nMit freundlichen Grüßen\nDein Semesterticketbüro");
 
 
 		String strURI = " --subject \'" + betreff + "\' --body \'" + mailtext + "\'";
