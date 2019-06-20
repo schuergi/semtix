@@ -353,7 +353,7 @@ public class DBHandlerPerson {
 
 		Criteria critAntrag = session.createCriteria(Antrag.class);
 
-		if (null != semesterIDs && semesterIDs.size() > 0) {
+		if (semesterIDs != null && semesterIDs.size() > 0) {
 			Property semesterId = Property.forName("semesterID");
 			critAntrag.add(semesterId.in(semesterIDs));
 		}
@@ -373,6 +373,8 @@ public class DBHandlerPerson {
 		//We are looking for persons that are not in the list:
 		Criteria critPerson = session.createCriteria(Person.class);
 		critPerson.add(Restrictions.eq("uni", UniConf.aktuelleUni));
+		// Auch bereits archivierte Personen aussortieren, schließlich soll jetzt archiviert werden.
+		critPerson.add(Restrictions.eq("archiviert", false));
 		critPerson.add(Restrictions.not(Restrictions.in("personID", personIds)));
         critPerson.addOrder(Order.asc("nachname"));
         critAntrag.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
