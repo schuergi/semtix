@@ -40,6 +40,7 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.awt.List;
 
 /**
  * Datenabgleich mit Immatrikulationsbüro
@@ -159,11 +160,11 @@ extends GenericPanelStep {
 
                     String ausgabe = c.getCurrentDirectory().toString() + File.separator + dateiname;
 
-                    int fehler = 0;
+                    java.util.List fehler = null;
 
                     try {
 
-                        fehler = dad.ausgeben(ausgabe);
+                       fehler = dad.ausgeben(ausgabe);
 
                         logTextArea.logText("(1) Datei exportiert");
 
@@ -173,8 +174,9 @@ extends GenericPanelStep {
                         JOptionPane.showMessageDialog(null, "Fehler wegen Windows-Datei-Encoding. \n" + e2.getMessage());
                     }
 
-                    if (fehler > 0) {
-                        JOptionPane.showMessageDialog(null, "Ausgabe erfolgreich: bitte trotzdem Personentabelle in der Datenbank säubern. Enthält " + fehler + " mangelhafte Datensätze.");
+                    if (fehler != null && ! fehler.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Ausgabe erfolgreich: bitte trotzdem Personentabelle in der Datenbank säubern. Enthält folgende mangelhafte Datensätze:\n" +
+                                "Matrikelnr.:" + fehler);
                     }
 
 

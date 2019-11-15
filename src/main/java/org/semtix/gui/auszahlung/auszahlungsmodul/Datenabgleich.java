@@ -34,10 +34,8 @@ import org.semtix.shared.daten.enums.SemesterArt;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
 
 /**
  * Für den Datenabgleich mit dem Immatrikulationsbüro müssen XLS Dateien geschrieben werden, die unseren Datenstand enthalten und danach eine
@@ -222,7 +220,7 @@ public class Datenabgleich {
      *             @throws FileNotFoundException Datei Nicht Gefunden
 	 *             @throws UnsupportedEncodingException Encoding nicht unterstützt
 	 */
-    public int ausgeben(String path) throws FileNotFoundException, UnsupportedEncodingException {
+    public List<String> ausgeben(String path) throws FileNotFoundException, UnsupportedEncodingException {
 
 		//Latin1-Encoding instead of "UTF-8":
 		PrintWriter writer = new PrintWriter(path, "ISO-8859-1");
@@ -241,10 +239,9 @@ public class Datenabgleich {
 		List<Person> students = dbhandler.getListeAntragsteller();
 
 		int i=0;
+		java.util.List<String> fehlerhafte = new java.util.ArrayList<String>();
 
-        int fehler = 0;
-
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+		SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
         // besser traditionelle for-schleife nehmen hier
         for (Person student : students) {
@@ -254,7 +251,10 @@ public class Datenabgleich {
 				String geburtsdatum = "00.00.0000";
 				String vorname = "";
 				String nachname = "";
-				String matrikelnummer = "0000";
+
+				// matrikelnr ist nie leer und kann bereits hier initialisiert werden.
+				//				String matrikelnummer = "0000";	--> wird nicht mehr gebraucht deshalb
+				String matrikelnummer = student.getMatrikelnr();
 
 				//Überspringt alle Einträge mit falschen Werten
 				try {
@@ -266,20 +266,25 @@ public class Datenabgleich {
 
 					nachname = student.getNachname();
 
-					matrikelnummer = student.getMatrikelnr();
 
 					writer.print(Integer.toString(i) + "," + aktuellesSemester + "," + geburtsdatum + "," + nachname + "," + vorname + "," + matrikelnummer + "\r\n");
 
 
 				} catch (Exception e) {
-					fehler++;
+                /*
+                Just here for debug purposes:
+
+                System.out.println(Integer.toString(i) + "," + aktuellesSemester + "," + geburtsdatum + "," + nachname + "," + vorname + "," + matrikelnummer + "\r\n");
+                e.printStackTrace();
+                */
+                    fehlerhafte.add(matrikelnummer);
 				}
 			}
 		}
 
 		writer.close();
 
-        return fehler;
+		return fehlerhafte;
     }
 
 }
