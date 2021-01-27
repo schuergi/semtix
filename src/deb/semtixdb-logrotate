@@ -1,0 +1,7 @@
+/var/log/semtixdb/semtixdb.log {
+	create 0666 root root
+	rotate 12
+	missingok
+	monthly
+	compress
+}

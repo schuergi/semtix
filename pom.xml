@@ -244,6 +244,16 @@
 						 <filemode>644</filemode>
 						</mapper>
 						</data>
+
+						<data>
+						<type>file</type>
+							<src>${project.basedir}/src/deb/semtixdb-logrotate</src>
+							<dst>etc/logrotate.d/semtixdb</dst>
+							<mapper>
+								<type>perm</type>
+								<filemode>644</filemode>
+							</mapper>
+						</data>
                       			</dataSet>
                         		</configuration>
                   		  </execution>
